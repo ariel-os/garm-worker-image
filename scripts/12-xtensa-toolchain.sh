@@ -1,0 +1,6 @@
+export ESPUP_VERSION=0.15.1
+export RUST_XTENSA_TOOLCHAIN_VERSION=1.85.0.0
+export RUST_XTENSA_TARGETS=esp32s3
+
+cargo binstall espup@${ESPUP_VERSION} --no-confirm
+espup install -v ${RUST_XTENSA_TOOLCHAIN_VERSION} --targets ${RUST_XTENSA_TARGETS}
