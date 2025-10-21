@@ -1,5 +1,5 @@
 
-# Used in 10-install-rust.sh and 11-ariel-prerequisites.sh
+# Used in 10-install-rust.sh, 11-ariel-prerequisites.sh, 20-cache-thing.sh
 export RUST_TOOLS_TOOLCHAIN=1.90.0
 
 
