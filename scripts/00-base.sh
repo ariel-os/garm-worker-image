@@ -10,5 +10,5 @@ apt-get -y install --no-install-recommends \
 		curl python3-requests tar jq zstd bzip2 unzip \
 		clang ninja-build make gcc \
 		pkg-config libssl-dev \
-		docker-compose-v2 docker.io docker-buildx zfsutils btrfs-progs cgroupfs-mount \
+		zfsutils btrfs-progs cgroupfs-mount \
 		git git-lfs
