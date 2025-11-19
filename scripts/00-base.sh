@@ -1,3 +1,8 @@
+
+# Used in 10-install-rust.sh and 11-ariel-prerequisites.sh
+export RUST_TOOLS_TOOLCHAIN=1.89.0
+
+
 echo "Updating system..."
 export DEBIAN_FRONTEND=noninteractive
 apt-get -y update && apt-get -y dist-upgrade

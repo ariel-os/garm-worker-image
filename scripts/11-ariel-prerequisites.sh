@@ -1,3 +1,6 @@
+LAZE_VERSION=^0.1
+GIT_CACHE_VERSION=0.2.6
+
 echo "Installing Ariel OS build deps"
 
 export DEBIAN_FRONTEND=noninteractive
@@ -14,11 +17,11 @@ echo 'SCCACHE_DIR=/cache/sccache' >> $GITHUB_ENV
 echo 'SCCACHE_CACHE_SIZE=128G' >> $GITHUB_ENV
 
 # laze
-cargo binstall laze
+cargo +${RUST_TOOLS_TOOLCHAIN} binstall laze@${LAZE_VERSION} --locked
 
 # git-cache
-cargo binstall git-cache
-cargo install --git https://github.com/kaspar030/git-cache-daemon
+cargo +${RUST_TOOLS_TOOLCHAIN} binstall git-cache@${GIT_CACHE_VERSION} --locked
+cargo +${RUST_TOOLS_TOOLCHAIN} install --git https://github.com/kaspar030/git-cache-daemon
 
 mv $(which git-cache) /usr/local/bin
 mv $(which git-cache-daemon) /usr/local/bin
