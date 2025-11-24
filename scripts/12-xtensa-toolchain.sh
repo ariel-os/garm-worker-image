@@ -4,3 +4,6 @@ export RUST_XTENSA_TARGETS=esp32s3
 
 cargo binstall espup@${ESPUP_VERSION} --no-confirm
 espup install -v ${RUST_XTENSA_TOOLCHAIN_VERSION} --targets ${RUST_XTENSA_TARGETS}
+
+# export-esp.sh is expected to be found in the current user's home directory
+cp /root/export-esp.sh /home/runner/export-esp.sh
