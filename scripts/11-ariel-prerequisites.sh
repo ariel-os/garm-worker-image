@@ -11,7 +11,7 @@ apt-get -y install --no-install-recommends \
 curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
 
 # sccache
-cargo binstall sccache --force
+cargo +${RUST_TOOLS_TOOLCHAIN} binstall sccache --force
 
 echo 'SCCACHE_DIR=/cache/sccache' >> $GITHUB_ENV
 echo 'SCCACHE_CACHE_SIZE=128G' >> $GITHUB_ENV
