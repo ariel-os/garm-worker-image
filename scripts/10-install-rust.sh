@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 RUST_NIGHTLY_TOOLCHAIN=nightly-2025-10-28
-RUST_STABLE_TOOLCHAIN=1.85.1
+RUST_STABLE_TOOLCHAIN=1.90.0
 RUST_TARGETS=riscv32imc-unknown-none-elf,riscv32imac-unknown-none-elf,thumbv6m-none-eabi,thumbv7m-none-eabi,thumbv7em-none-eabi,thumbv7em-none-eabihf,thumbv8m.main-none-eabi,thumbv8m.main-none-eabihf
 RUST_COMPONENTS=rust-src,rustfmt,llvm-tools
 RUST_PROFILE=minimal
