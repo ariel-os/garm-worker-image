@@ -29,7 +29,6 @@ mv $(which git-cache-daemon) /usr/local/bin
 cp /scripts/git-cache.service /etc/systemd/system
 systemctl enable git-cache.service
 systemctl start git-cache.service
-git config --system url.git://localhost/.insteadof https://
 
 # TODO: restrict to git-cache-daemon
 git config --system --add safe.directory '*'
