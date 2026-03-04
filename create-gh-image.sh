@@ -27,6 +27,8 @@ cat <<EOF | incus exec ${TARGET_IMAGE}-temp -- bash
 set -x
 set -e
 
+export GITHUB_TOKEN=$GITHUB_TOKEN
+
 cd /scripts
 
 for i in *.sh; do
