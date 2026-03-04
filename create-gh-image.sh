@@ -43,6 +43,3 @@ EOF
 # Stop the instance and publish it as a new image
 incus stop ${TARGET_IMAGE}-temp
 incus publish ${TARGET_IMAGE}-temp --alias $TARGET_IMAGE --reuse
-
-# Update garm to use the new image
-garm-cli pool update $POOL_ID --image=${TARGET_IMAGE}
