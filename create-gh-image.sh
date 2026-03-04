@@ -8,8 +8,11 @@ set -e
 function cleanup()
 {
     # Delete the temporary instance
-    incus delete ${TARGET_IMAGE}-temp --force
+    incus delete ${TARGET_IMAGE}-temp --force || true
 }
+
+# cleanup on start 
+cleanup
 
 trap cleanup EXIT 
 
