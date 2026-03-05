@@ -5,7 +5,7 @@ echo "Installing Ariel OS build deps"
 
 export DEBIAN_FRONTEND=noninteractive
 apt-get -y install --no-install-recommends \
-	ninja-build gcc-arm-none-eabi gcc-riscv64-unknown-elf
+	ninja-build gcc-arm-none-eabi gcc-riscv64-unknown-elf libnewlib-dev
 
 # binstall
 curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
