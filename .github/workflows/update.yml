@@ -1,0 +1,61 @@
+name: Update images
+on:
+  push:
+    branches: ["main"]
+  # So we can manually trigger it 
+  workflow_dispatch:
+
+permissions: {}
+concurrency:
+  group: ${{ github.head_ref || github.run_id }}-update-images
+  cancel-in-progress: true
+jobs:
+  # update image on each garm node
+  update-images:
+    runs-on: ["updater", "${{ matrix.node }}"]
+    permissions:
+      contents: read
+    strategy:
+      matrix:
+        # Add each CI nodes here
+        node:
+          [
+            "tribe-ariel-ci1",
+            "tribe-ariel-ci2",
+            "tribe-ariel-ci3",
+            "tribe-ariel-ci4",
+          ]
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          persist-credentials: false
+
+      - name: "Update runner image"
+        run: |
+          bash create-gh-image.sh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: "Update updater image"
+        run: |
+          bash create-updater-image.sh
+
+      - name: Set garm config
+        run: |
+          mkdir -p ~/.local/share/garm-cli/
+
+          cat > ~/.local/share/garm-cli/config.toml <<EOL
+          active_manager = "ariel-os"
+
+          [[manager]]
+            name = "ariel-os"
+            base_url = "https://ci.ariel-os.org/garm"
+            bearer_token = "${{ secrets.GARM_BEARER_TOKEN }}"
+          EOL
+
+      - name: "Recreate idle runners"
+        # TODO: when garm 0.2.0 gets released, use https://github.com/cloudbase/garm/pull/595
+        run: |
+          garm-cli pool list -a | grep ${{ matrix.node }} | cut -d\| -f2 | xargs -n1 garm-cli runner list | grep idle | grep -o 'garm-\S*' | xargs -n1 garm-cli runner remove

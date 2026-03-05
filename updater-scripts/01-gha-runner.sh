@@ -16,4 +16,4 @@ rm ./actions-runner-linux-x64-${GHAR_VER}.tar.gz
 
 export GITHUB_ENV=/home/runner/actions-runner/.env
 touch $GITHUB_ENV
-chown 1001:1001 $GITHUB_ENV
+chown 1001:1004 $GITHUB_ENV

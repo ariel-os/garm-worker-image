@@ -1,6 +1,5 @@
 export BASE_IMAGE="images:ubuntu/24.04/cloud"
-export TARGET_IMAGE="ubuntu-24-04-gh"
-export POOL_ID=83a23dd0-2a59-4079-8c73-8af96e5b4735
+export TARGET_IMAGE="incus-image-updater"
 
 set -x
 set -e
@@ -19,26 +18,24 @@ trap cleanup EXIT
 # Create a temporary instance from your base image
 incus launch $BASE_IMAGE ${TARGET_IMAGE}-temp
 
-# Copy over scripts
-incus file push -r scripts ${TARGET_IMAGE}-temp/
+# Copy over updater-scripts
+incus file push -r updater-scripts ${TARGET_IMAGE}-temp/
 
 # Enter bash inside the container
 cat <<EOF | incus exec ${TARGET_IMAGE}-temp -- bash
 set -x
 set -e
 
-export GITHUB_TOKEN=$GITHUB_TOKEN
-
-cd /scripts
+cd /updater-scripts
 
 for i in *.sh; do
     # ensure we're still here
-    cd /scripts
+    cd /updater-scripts
     # source shell snippets
     . \${i}
 done
 
-rm -Rf /scripts
+rm -Rf /updater-scripts
 
 # Exit the container
 exit
