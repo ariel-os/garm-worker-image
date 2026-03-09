@@ -1,6 +1,6 @@
 
 # Used in 10-install-rust.sh, 11-ariel-prerequisites.sh, 20-cache-thing.sh
-export RUST_TOOLS_TOOLCHAIN=1.93.0
+export RUST_TOOLS_TOOLCHAIN=1.94.0
 
 
 echo "Updating system..."
