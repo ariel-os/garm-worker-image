@@ -1,5 +1,5 @@
 export ESPUP_VERSION=0.16.0
-export RUST_XTENSA_TOOLCHAIN_VERSION=1.94.0.2
+export RUST_XTENSA_TOOLCHAIN_VERSION=1.95.0.0
 export RUST_XTENSA_TARGETS=esp32s3,esp32s2,esp32
 
 cargo +${RUST_TOOLS_TOOLCHAIN} binstall espup@${ESPUP_VERSION} --no-confirm --locked
