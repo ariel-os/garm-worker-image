@@ -1,10 +1,10 @@
 #!/bin/bash -e
 
 # keep latest and previous toolchains
-RUST_NIGHTLY_TOOLCHAINS=nightly-2026-04-28,nightly-2026-10-14
-RUST_STABLE_TOOLCHAINS=1.98.0
+RUST_NIGHTLY_TOOLCHAINS=nightly-2026-11-18
+RUST_STABLE_TOOLCHAINS=1.100.0
 
-RUST_DEFAULT_TOOLCHAIN=1.98.0
+RUST_DEFAULT_TOOLCHAIN=1.100.0
 
 RUST_TARGETS=riscv32imc-unknown-none-elf,riscv32imac-unknown-none-elf,thumbv6m-none-eabi,thumbv7m-none-eabi,thumbv7em-none-eabi,thumbv7em-none-eabihf,thumbv8m.main-none-eabi,thumbv8m.main-none-eabihf
 RUST_COMPONENTS=rust-src,rustfmt,llvm-tools
