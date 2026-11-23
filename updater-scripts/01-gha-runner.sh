@@ -1,6 +1,6 @@
 echo "Installing GH actions runner..."
 
-GHAR_VER=2.337.0
+GHAR_VER=2.338.2
 
 # Download the runner package
 mkdir -p /home/runner/actions-runner
